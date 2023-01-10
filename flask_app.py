@@ -1,3 +1,7 @@
+import warnings
+#import numpy as np
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import pandas as pd
 from flask import Flask, request, jsonify
 # from functions.feature_extraction import get_features
@@ -80,7 +84,7 @@ def index():
     return "model and data loaded ..."
 
 
-#  local address: http://127.0.0.1:5000/client_score/? =116905
+#  local address: http://127.0.0.1:5000/client_score/?SK_ID_CURR=116905
 @flask_app.route('/client_score/')
 def get_score():
     client_id = int(request.args.get('SK_ID_CURR'))
@@ -118,16 +122,16 @@ def get_id_data():
     # Returning the processed data
     return jsonify({'status': status_json, 'data': features_json}) \
  \
-        # @flask_app.route('/features/')
 
-#@flask_app.route('/features/')
- #def get_features():
- #  n = int(request.args.get('n'))
- # c_df = list(model.named_steps["logistic"].coef_[0])
-  #c_df_abs = [abs(c) for c in c_df]
-  #c_df_abs = sorted(c_df_abs, reverse=True)[:n]
-  #c_df = [c for c in c_df if abs(c) in c_df_abs]
-#model_importance = pd.DataFrame(zip(features, c_df), columns=["feature", "importance"])
+
+# @flask_app.route('/features/')
+# def get_features():
+#  n = int(request.args.get('n'))
+# c_df = list(model.named_steps["logistic"].coef_[0])
+# c_df_abs = [abs(c) for c in c_df]
+# c_df_abs = sorted(c_df_abs, reverse=True)[:n]
+# c_df = [c for c in c_df if abs(c) in c_df_abs]
+# model_importance = pd.DataFrame(zip(features, c_df), columns=["feature", "importance"])
 # model_importance = model_importance.sort_values("importance", ascending=False)
 # return jsonify(json.loads(model_importance.to_json()))
 
@@ -177,23 +181,24 @@ def plot_l_importance():
     X_sc_ = StandardScaler().fit_transform(X_)
     X_t = train_test_split(X_sc_, y, test_size=0.3)[0]
 
-    #print('*****************')
-    #print(data[data['SK_ID_CURR'] == client_id])
+    # print('*****************')
+    # print(data[data['SK_ID_CURR'] == client_id])
     if data[data['SK_ID_CURR'] == client_id].empty:
         return 'not available'
     else:
         # X_train, X_sc_ = get_Xtrain(data, features)
-        explainer = LimeTabularExplainer(X_t, mode="classification", class_names=['Accepted', 'Refused'], feature_names= features)
+        explainer = LimeTabularExplainer(X_t, mode="classification", class_names=['Accepted', 'Refused'],
+                                         feature_names=features)
         idx = data[data["SK_ID_CURR"] == client_id].index
         data_instance = X_sc[idx].reshape(len(features), )
         explanation = explainer.explain_instance(data_instance, model.predict_proba, num_features=10)
         sel_features = select_features(explanation)
         importance = explanation.as_list()
-        df = pd.DataFrame(importance,columns=['features','importance'])
+        df = pd.DataFrame(importance, columns=['features', 'importance'])
         print(df)
         # sel_features = features
     return jsonify(json.loads(df.to_json()))
-    #return jsonify(sel_features, importance)
+    # return jsonify(sel_features, importance)
 
     #############
 

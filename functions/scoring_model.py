@@ -1,11 +1,10 @@
 import pandas as pd
-import numpy as np
 import pickle
-import smote
-import imblearn
-import sklearn
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
+#import smote
+#import imblearn
+#import sklearn
+#from sklearn.linear_model import LogisticRegression
+#from sklearn.model_selection import train_test_split
 
 
 # function that reads the dataset

@@ -18,7 +18,7 @@ url = "https://127.6.5.1.5000/SK_ID_CURR"
 ##########################################################################
 
 
-url = "http://127.0.0.1:5000/client_score/?SK_ID_CURR="
+#url = "http://127.0.0.1:5000/client_score/?SK_ID_CURR="
 
 
 def st_title():
@@ -144,12 +144,10 @@ def plot_l_importance(df, model, features, b_loc_importance, client_id, num_feat
         The whole dataset
     :param model: ML model
         Fitted ML model
-    :param features: list
-        list of selected columns as features
+
     :param b_loc_importance: button obj
         Loan allocation menu
-    :param id: int
-        Customer's id
+
     :return: list
         First (10) important features selected by explain_instance
     """
@@ -179,7 +177,7 @@ def dist_per_axis(ax, features, df_target, df_instance):
     :param ax: ndarray
         axe pyplot object
     :param features: list
-        List of selected fetures
+        List of selected features
     :param df_target: dataframe
         dataframe for either OK class(0) or Risky class(1)
     :param df_instance: dataframe
