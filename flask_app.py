@@ -1,7 +1,3 @@
-import warnings
-#import numpy as np
-warnings.simplefilter(action='ignore', category=FutureWarning)
-
 import pandas as pd
 from flask import Flask, request, jsonify
 # from functions.feature_extraction import get_features
@@ -122,9 +118,8 @@ def get_id_data():
     # Returning the processed data
     return jsonify({'status': status_json, 'data': features_json}) \
  \
-
-
-# @flask_app.route('/features/')
+ \
+    # @flask_app.route('/features/')
 # def get_features():
 #  n = int(request.args.get('n'))
 # c_df = list(model.named_steps["logistic"].coef_[0])

@@ -3,4 +3,5 @@ numpy == 1.23.5
 sklearn == 0.0.post1
 lime ==  0.2.0.1
 joblib == 1.2.0
-flask == 22.3.1
+flask == 2.2.2
+imbalanced-learn == 0.7.0
