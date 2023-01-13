@@ -179,7 +179,7 @@ def plot_l_importance():
     # print('*****************')
     # print(data[data['SK_ID_CURR'] == client_id])
     if data[data['SK_ID_CURR'] == client_id].empty:
-        return 'not available'
+        return jsonify(json.loads(pd.DataFrame().to_json()))
     else:
         # X_train, X_sc_ = get_Xtrain(data, features)
         explainer = LimeTabularExplainer(X_t, mode="classification", class_names=['Accepted', 'Refused'],
