@@ -106,7 +106,7 @@ def clients_ids_list():
     return jsonify(clients_id_list_json)
 
 
-# local address : http://127.0.0.1:5000/client_id_data/?SK_ID_CURR=116905
+# local address : http://127.0.0.1:5000/client_id_data/?SK_ID_CURR=104405
 @flask_app.route('/client_id_data/')
 def get_id_data():
     selected_id_client = int(request.args.get('SK_ID_CURR'))
