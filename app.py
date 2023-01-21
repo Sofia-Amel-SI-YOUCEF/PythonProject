@@ -80,7 +80,7 @@ def index():
     return "model and data loaded ..."
 
 
-#  local address: http://127.0.0.1:5000/client_score/?SK_ID_CURR=116905
+#  local address: http://127.0.0.1:5000/client_score/?SK_ID_CURR=104405
 @flask_app.route('/client_score/')
 def get_score():
     client_id = int(request.args.get('SK_ID_CURR'))
