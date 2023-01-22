@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 import json
 
-data = read_data(path="Data/data500.csv")
+data = read_data(path="Data/data500new.csv")
 
 # data = read_data()
 # features = get_features(data)

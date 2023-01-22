@@ -4,7 +4,7 @@ import pickle
 
 
 # function that reads the dataset
-def read_data(path="Data/data500.csv"):
+def read_data(path="Data/data500new.csv"):
     return pd.read_csv(path).reset_index(drop=True)
 
 
